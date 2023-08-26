@@ -1,15 +1,6 @@
-#
-#spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-#spring.jpa.hibernate.ddl-auto=update
-#spring.datasource.url=jdbc:mysql://localhost:3306/movieappdb
-#spring.datasource.username=root
-#spring.datasource.password=admin@123
-#spring.jpa.show-sql: true
-#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
-#server.port=8081
 spring:
   application:
-    name: UserService
+    name: MovieService
   jpa:
     show-sql: true
     hibernate:
@@ -21,7 +12,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
         
 server:
-  port: 8081
+  port: 8082
 eureka:
   client:
     serviceUrl:
@@ -33,10 +24,9 @@ springdoc:
   swagger-ui:
     path: /swagger-ui.html
 
+
 management:
   endpoints:
     web:
       exposure:
         include: '*'
-
-

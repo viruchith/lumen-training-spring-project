@@ -1,5 +1,7 @@
 package demo.boot.model;
 
+import org.hibernate.validator.constraints.URL;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,11 +14,11 @@ import jakarta.validation.constraints.Pattern;
 public class Movie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	private Long id;
 
 	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "^tt\\\\d{7}$")
+	@Pattern(regexp = "^tt\\d{7}$")
 	private String imdbID;
 	
 	private String imdbRating;
@@ -32,17 +34,19 @@ public class Movie {
 	private String actors;
 	private String language;
 	private String plot;
-	private String poster;
+	
+	@URL
+	private String posterLink;
 	
 	public Movie() {
 		super();
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -118,19 +122,22 @@ public class Movie {
 		this.plot = plot;
 	}
 
-	public String getPoster() {
-		return poster;
+	
+
+	public String getPosterLink() {
+		return posterLink;
 	}
 
-	public void setPoster(String poster) {
-		this.poster = poster;
+	public void setPosterLink(String posterLink) {
+		this.posterLink = posterLink;
 	}
 
 	@Override
 	public String toString() {
-		return "Movie [id=" + id + ", imdbID=" + imdbID + ", title=" + title + ", runtime=" + runtime + ", releaseDate="
-				+ releaseDate + ", genre=" + genre + ", director=" + director + ", actors=" + actors + ", language="
-				+ language + ", plot=" + plot + ", poster=" + poster + "]";
+		return "Movie [id=" + id + ", imdbID=" + imdbID + ", imdbRating=" + imdbRating + ", title=" + title
+				+ ", runtime=" + runtime + ", releaseDate=" + releaseDate + ", genre=" + genre + ", director="
+				+ director + ", actors=" + actors + ", language=" + language + ", plot=" + plot + ", posterLink="
+				+ posterLink + "]";
 	}
 
 	public String getImdbRating() {
