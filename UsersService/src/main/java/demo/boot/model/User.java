@@ -24,7 +24,6 @@ public class User {
 	private String email;
 	
 	@NotBlank
-	@JsonIgnore
 	private String password;
 	
 	@NotBlank
@@ -34,7 +33,7 @@ public class User {
 	private String lastName;
 	
 	@NotBlank
-	@Pattern(regexp = "MALE|FEMALE")
+	@Pattern(regexp = "MALE|FEMALE",message = "Gender must  be either 'MALE' or 'FEMALE'")
 	private String gender;
 
 	public User() {
