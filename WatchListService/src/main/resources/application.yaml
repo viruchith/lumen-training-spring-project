@@ -1,0 +1,33 @@
+
+spring:
+  application:
+    name: WatchListService
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:3306/movieappdb
+    username: root
+    password: admin@123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+        
+server:
+  port: 8083
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+

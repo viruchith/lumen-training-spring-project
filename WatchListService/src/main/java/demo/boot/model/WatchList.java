@@ -1,21 +1,30 @@
 package demo.boot.model;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
+@Entity
 public class WatchList {
 
 	@jakarta.persistence.Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id;
+	
+	@NotNull
+	private Long userId;
 
 	@Column(unique = true)
+	@NotBlank
 	private String title;
 
 	private String description;
@@ -24,7 +33,7 @@ public class WatchList {
 
 	private LocalDateTime updatedAt;
 	
-	private Set<Long> movieIds;
+	private Set<Long> movieIds = new HashSet<>();
 
 	@PrePersist
 	private void onCreate() {
@@ -88,6 +97,14 @@ public class WatchList {
 
 	public void setMovieIds(Set<Long> movieIds) {
 		this.movieIds = movieIds;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 	
 	
