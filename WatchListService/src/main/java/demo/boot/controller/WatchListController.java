@@ -35,7 +35,7 @@ public class WatchListController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteById(Long id){
+	public ResponseEntity<?> deleteById(@PathVariable Long id){
 		watchListService.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
