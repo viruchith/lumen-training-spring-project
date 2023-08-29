@@ -34,8 +34,8 @@ public class MovieController {
 		return ResponseEntity.ok(movie);
 	}
 	
-	@GetMapping("/imdbID/{imdbID:tt\\d{7}}")
-	public ResponseEntity<?> getByImdbID(String imdbID){
+	@GetMapping("/imdbID/{imdbID}")
+	public ResponseEntity<?> getByImdbID(@PathVariable String imdbID){
 		Movie movie = movieService.getByImdbID(imdbID);
 		return ResponseEntity.ok(movie);
 	}

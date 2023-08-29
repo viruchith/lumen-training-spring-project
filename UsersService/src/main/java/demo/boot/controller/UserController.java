@@ -1,4 +1,4 @@
-package demo.boot.exception;
+package demo.boot.controller;
 
 import java.util.List;
 
